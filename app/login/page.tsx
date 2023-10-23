@@ -68,17 +68,17 @@ export default function Home() {
               </div>
 
               <div className="login-box">
-                <p className="text">Don't have an account?<a href="https://www.instagram.com/accounts/emailsignup">Sign up</a></p>
+                <p className="text">Don&apos;t have an account?<a href="https://www.instagram.com/accounts/emailsignup">Sign up</a></p>
               </div>
 
               <div className="app">
                 <p>Get the app.</p>
                 <div className="app-img">
                   <a href="https://itunes.apple.com/app/instagram/id389801252?pt=428156&amp;ct=igweb.loginPage.badge&amp;mt=8">
-                    <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/4b70f6fae447.png" />
+                    <img alt="appstore" src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_english-en.png/4b70f6fae447.png" />
                   </a>
                   <a href="https://play.google.com/store/apps/details?id=com.instagram.android&amp;referrer=utm_source%3Dinstagramweb%26utm_campaign%3DloginPage%26utm_medium%3Dbadge">
-                    <img src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/f06b908907d5.png"/>
+                    <img alt="playstore" src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_english-en.png/f06b908907d5.png"/>
                   </a>  
                 </div> 
               </div>
