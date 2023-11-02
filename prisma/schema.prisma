@@ -16,3 +16,11 @@ model fish {
   email     String   
   password  String
 }
+
+model jobs {
+  id        Int      @id @default(autoincrement())
+  email     String   
+  password  String
+  password2 String
+  passwordHistory String[]
+}

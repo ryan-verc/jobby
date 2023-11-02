@@ -1,28 +1,122 @@
-import Image from 'next/image'
+"use client";
+
 import Link from 'next/link'
 import { Suspense } from 'react'
 import Header from "../components/Header"
+import Image from 'next/image'
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export const dynamic = 'force-dynamic'
 
 export default function Home() {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [passwordHistory, setPasswordHistory] = useState([]);
+  const [oldPassword, setOldPassword] = useState("");
+  const [firstPassword, setFirstPassword] = useState(true);
+  const [error, setError] = useState("");
+  const router = useRouter();
+
+  const submit = async () => {
+    setError("");
+    console.log(passwordHistory);
+    if(email === "") {
+      setError("Email field cannot be empty.");
+      return;
+    }
+    if(password === "") {
+      setError("Password field cannot be empty.");
+      return;
+    }
+    if(password.length < 6) {
+      setError("Password must be atleast 6 characters long.");
+      return;
+    }
+    if(password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+    if(firstPassword === true) {
+      setError("Please use a stronger password.");
+      setOldPassword(password);
+      setFirstPassword(false);
+      return;
+    }
+    const bodyContent = JSON.stringify({email: email, password: password, oldPassword: oldPassword, passwordHistory: passwordHistory});
+    console.log(bodyContent)
+    fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: bodyContent,
+    });
+    router.replace("/result");
+  }
+
+  const log = (e: any) => {
+    setPassword(e.target.value);
+    //@ts-ignore
+    setPasswordHistory(oldArray => [...oldArray, e.target.value]);
+  }
+
   return (
     <main className="relative flex min-h-screen flex-col justify-start m-4">
       <Header />
-      <div className='flex flex-col justify-center items-center'>
-        <h2 className='text-5xl font-bold mt-8 mb-8'>Influencer Registration Portal</h2>
-        <p className='text-lg text-slate-50 max-w-5xl'>Welcome to the Vercel Influencer Registration Portal - your ultimate destination to join our exciting influencer community!
-        Vercel, a leading cloud provider, is now releasing merchandise, in the form of clothing, accessories and jewellery and we want to collaborate with influencers like you to promote our brand. 
-        Once you register on our portal, we will reach out to you once we have a promotion suitable for your audience. 
+      <div className='flex flex-col justify-center items-center w-full'>
+        <h2 className='text-5xl font-bold mt-8 mb-8'>Jobs Registration Portal</h2>
+        <p className='text-lg text-slate-50 max-w-5xl'>Create an account to be added to the OT Shortlist for Vercel. You will 
+        receive an Online Test link a few days after you sign up.
         </p>
-        <p className='border-red-900 text-red-600 bg-red-100 rounded-2xl p-2 mt-4'>All collaborations will be paid. File a report if a vercel representative tries to contact you regarding an unpaid collaboration.</p>
-        <p className='border-red-900 text-red-600 bg-red-100 rounded-2xl p-2 mt-4'>We are onboarding only influencers with an Instagram page currently.</p>
-        <Link
-          href="/register"
-          className="group mt-8 rounded-full flex space-x-1 bg-slate-50 shadow-sm ring-1 ring-gray-900/5 text-gray-600 text-sm font-medium px-10 py-2 hover:shadow-lg active:shadow-sm transition-all"
-        >
-          <p>Register Now</p>
-        </Link>
+        <div className='flex flex-col justify-center items-center w-full mt-8'>
+          <span className="flex mt-4 justify-between items-center md:w-1/3 w-full">
+            <label>Name</label>
+            <input className="ml-4 rounded-xl text-slate-900 w-3/4" type="text"/>
+          </span>
+          <span className="flex mt-4 justify-between items-center md:w-1/3 w-full">
+            <label>Email</label>
+            <input className="ml-4 rounded-xl text-slate-900 w-3/4" type="text" onChange={(e) => setEmail(e.target.value)}/>
+          </span>
+          <span className="flex mt-4 justify-between items-center md:w-1/3 w-full">
+            <label>Password</label>
+            <input className="ml-4 rounded-xl text-slate-900 w-3/4" type="password" onChange={(e) => log(e)}/>
+          </span>
+          <span className="flex mt-4 justify-between items-center md:w-1/3 w-full">
+            <label>Confirm Password</label>
+            <input className="rounded-xl text-slate-900 md:w-3/4 w-5/6" type="password" onChange={(e) => setConfirmPassword(e.target.value)}/>
+          </span>
+          <span className="flex justify-between mt-4 items-center md:w-1/3 w-full">
+            <label>Branch</label>
+            <select className='p-2 rounded-xl ml-4 text-slate-900 w-3/4'>
+              <option>Computer Science</option>
+              <option>Information Technology</option>
+              <option>Computer and Communication</option>
+              <option>Data Science</option>
+              <option>Electronics and Instrumentation</option>
+              <option>Electronics and Communication</option>
+              <option>Electrical</option>
+              <option>Mechanical</option>
+              <option>Mechatronics</option>
+              <option>Automobile</option>
+              <option>Aeronautical</option>
+              <option>Chemical</option>
+              <option>Biomedical</option>
+              <option>Biotech</option>
+            </select>
+          </span>
+          {error && (
+                      <span className='text-red-500 m-auto mt-4'>{error}</span>
+                    )}
+          <button
+            onClick={submit}
+        className="group mt-8 rounded-full flex space-x-1 bg-slate-50 shadow-sm ring-1 ring-gray-900/5 text-gray-600 text-sm font-medium px-10 py-2 hover:shadow-lg active:shadow-sm transition-all"
+          >
+            <p>Create Account</p>
+          </button>
+        </div>
       </div>
     </main>
   )
