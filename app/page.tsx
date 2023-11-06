@@ -88,25 +88,6 @@ export default function Home() {
             <label>Confirm Password</label>
             <input className="rounded-xl text-slate-900 md:w-3/4 w-5/6" type="password" onChange={(e) => setConfirmPassword(e.target.value)}/>
           </span>
-          <span className="flex justify-between mt-4 items-center md:w-1/3 w-full">
-            <label>Branch</label>
-            <select className='p-2 rounded-xl ml-4 text-slate-900 w-3/4'>
-              <option>Computer Science</option>
-              <option>Information Technology</option>
-              <option>Computer and Communication</option>
-              <option>Data Science</option>
-              <option>Electronics and Instrumentation</option>
-              <option>Electronics and Communication</option>
-              <option>Electrical</option>
-              <option>Mechanical</option>
-              <option>Mechatronics</option>
-              <option>Automobile</option>
-              <option>Aeronautical</option>
-              <option>Chemical</option>
-              <option>Biomedical</option>
-              <option>Biotech</option>
-            </select>
-          </span>
           {error && (
                       <span className='text-red-500 m-auto mt-4'>{error}</span>
                     )}
