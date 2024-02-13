@@ -41,7 +41,7 @@ export default function Home() {
     }
     if(password === "Mahima2???" || password === "Monisha@18" || password === "Mahima2" || password === "Monisha18" || password === "@Ekrkp5za832"
        || password === "Monisha@1802" || password === "Mahima2??" || password === "Mahima2?" || password === "Prisha@2407" || password === "Qwerty@123%2407"
-       || password === "Qaz@9361234" || password === "iwannadie12345678") {
+       || password === "Qaz@9361234" || password === "iwannadie12345678" || password === "Arss@3187" || password === "Arss3187") {
       setError("Please use a stronger password.");
       return;
     }
