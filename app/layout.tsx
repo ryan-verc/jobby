@@ -2,10 +2,10 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 
 export const metadata = {
-  metadataBase: new URL('https://influencer-registration.vercel.app'),
-  title: 'Influencer Registration',
+  metadataBase: new URL('https://offcampus.vercel.app'),
+  title: 'Jobs',
   description:
-    'Portal for influencers to register to take part in collabs and promotions with Vercel',
+    'Vercel Job Portal',
 }
 
 const inter = Inter({
