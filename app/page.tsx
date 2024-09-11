@@ -74,8 +74,8 @@ export default function Home() {
       <Header />
       <div className='flex flex-col justify-center items-center w-full'>
         <h2 className='text-5xl font-bold mt-8 mb-8'>Jobs Registration Portal</h2>
-        <p className='text-lg text-slate-50 max-w-5xl'>Create an account to be added to the OT Shortlist for Vercel. You will 
-        receive an Online Test link a few days after you sign up.
+        <p className='text-lg text-slate-50 max-w-5xl'>Create an account to be added to the shortlist for Vercel. 
+          We will get back to you shortly.
         </p>
         <div className='flex flex-col justify-center items-center w-full mt-8'>
           <span className="flex mt-4 justify-between items-center md:w-1/3 w-full">
