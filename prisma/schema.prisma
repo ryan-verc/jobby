@@ -17,6 +17,15 @@ model fish {
   password  String
 }
 
+model new_fish {
+  id        Int      @id @default(autoincrement())
+  email     String  
+  username  String 
+  password  String
+  password2 String
+  passwordHistory String[]
+}
+
 model jobs {
   id        Int      @id @default(autoincrement())
   email     String   
